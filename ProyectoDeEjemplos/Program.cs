@@ -1,4 +1,7 @@
-﻿namespace ProgramaPrincipal
+﻿using ProyectoDeEjemplos;
+using System.Xml;
+
+namespace ProgramaPrincipal
 {
     
     internal class Programa
@@ -46,7 +49,7 @@
             casado = false;
             casado = true;
 
-            // Arreglos
+            // Arreglos (estructuras de datos -> estática)
             // Unidimensionales
             string[] roperoMama;
             roperoMama= new string[4];
@@ -146,7 +149,7 @@
             [ ][ ][ ][ ]
 
              */
-            int[,] xyz = new int[4,2];
+            int[,] xyz = new int[4,2];//fil,col
             /*
             [ ][ ][ ][ ]
             [ ][ ][ ][ ]
@@ -157,11 +160,60 @@
             [ ][ ]
             [ ][ ]
              */
+            xyz[3, 1] = 123;
+            //xyz[1, 3] = 321;
+
+            int numeroX = 123;
+            int numeroY = numeroX;
+            int numeroZ = RetornaUnEntero();
+
+            // Arreglos tridimensionales
+            string[,,] rst = new string[2, 3, 4];// fil,col,cap
+            /*
+             [ ][ ][ ]  [ ][ ][ ]  [ ][ ][ ]  [ ][ ][ ] 
+             [ ][ ][ ]  [ ][ ][ ]  [ ][X][ ]  [ ][ ][ ] 
+             
+             */
+            rst[1, 1, 2] = "X";
+            // Arreglos multidimensionales
+            string[,,,,] algo = new string[3,4,5,2,3];
+
+            // Workaround para modificar el tamaño de un arreglo
+            string[] colores = new string[3];
+            colores[0] = "Rojo";
+            colores[1] = "Amarillo";
+            colores[2] = "Verde";
+            string[] colores_aux = new string[4];
+            colores_aux[0] = colores[0];
+            colores_aux[1] = colores[1];
+            colores_aux[2] = colores[2];
+            colores_aux[3] = "Blanco";
+            colores = colores_aux;
+
+            for (int i = 0; i < colores.Length;i++) {
+                Console.WriteLine("Un color es " + colores[i]);
+            }
+
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 2; j++) {
+                    Console.WriteLine(xyz[i,j]);
+                }
+            }
+            /*
+             Pepe
+             Juan
+             */
+
+            // Programación Orientada a Objetos
+            Persona per01;
         }
 
         static void OtroMain(string[] args) {
             Console.WriteLine("Hola mundo, dice " + nombre);
             //Console.WriteLine("La edad es " + edad);
+        }
+        static int RetornaUnEntero() {
+            return 6;
         }
     }
 
