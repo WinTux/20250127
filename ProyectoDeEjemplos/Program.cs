@@ -206,6 +206,14 @@ namespace ProgramaPrincipal
 
             // Programación Orientada a Objetos
             Persona per01;
+            per01 = new Persona();
+            per01.nombre = "Ana";
+            per01.apellido = "Chinguaricolemenepiparepiledo";
+            per01.edad = 15;
+            Console.WriteLine("La persona se llama " + per01.nombre + " " + per01.apellido + " y su edad es "+per01.edad);
+            Console.WriteLine($"La persona se llama {per01.nombre} {per01.apellido} y su edad es {per01.edad}.");
+            per01.edad = -300;
+            Console.WriteLine($"La persona se llama {per01.nombre} {per01.apellido} y su edad es {per01.edad}.");
         }
 
         static void OtroMain(string[] args) {
