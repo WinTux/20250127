@@ -40,14 +40,23 @@ namespace ProyectoDeEjemplos
             _apellido = "NA";
             _edad = 4;
         }
-        public Persona(String nom) {
+        public Persona(string nom) {
             _nombre = nom;
             _apellido = "No informa";
             _edad = 0;
         }
+        public Persona(string nombre, string apellido, int edad) { 
+            this.nombre= nombre;
+            this.apellido = apellido;
+            this.edad = edad;
+        }
         // Acciones
         public void Saludar() {
             Console.WriteLine("Hola, buenas noches");
+        }
+        public void Presentarse() {
+            Saludar();
+            Console.WriteLine($"Mi nombre es {_nombre} {_apellido} y cuento con {_edad} años.");
         }
         public void Caminar(int cantidadPasos) {
             if (cantidadPasos >= 0)
@@ -62,5 +71,38 @@ namespace ProyectoDeEjemplos
             string hora = "20:00";
             return hora;
         }
+    }
+    public class Estudiante : Persona, ICiudadano { // hereda -->
+        private int _matricula;
+        private string _carrera;
+        public int matricula
+        {
+            get { return _matricula; }
+            set { if(value > 1000) _matricula = value; }
+        }
+        public string carrera
+        {
+            get { return _carrera; }
+            set { if (value.Length > 3) _carrera = value; }
+        }
+        public Estudiante(int matricula, string carrera) {
+            this.matricula = matricula;
+            this.carrera = carrera;
+        }
+        public Estudiante(string nombre, string apellido, int edad, int matricula, string carrera) : base(nombre,apellido,edad) {
+            this.matricula = matricula;
+            this.carrera = carrera;
+        }
+        public void Presentarse() {
+            Console.WriteLine($"Hola a todos, me llamo {nombre} {apellido}, tengo {edad} años, estoy en la carrera de {carrera}, cuento con mi matrícula {matricula}. Espero llevarme bien con todos.");
+        }
+
+        public void Votar(string partido)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public interface ICiudadano {
+        public void Votar(string partido);
     }
 }

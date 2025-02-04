@@ -214,6 +214,13 @@ namespace ProgramaPrincipal
             Console.WriteLine($"La persona se llama {per01.nombre} {per01.apellido} y su edad es {per01.edad}.");
             per01.edad = -300;
             Console.WriteLine($"La persona se llama {per01.nombre} {per01.apellido} y su edad es {per01.edad}.");
+            per01.Presentarse();
+            Estudiante est01 = new Estudiante(123, "Psicología");
+            est01.Saludar();
+            est01.Presentarse();
+            Estudiante est02 = new Estudiante("Ana", "Rocha", 17,1240, "Psicología");
+            est02.Saludar();
+            est02.Presentarse();
         }
 
         static void OtroMain(string[] args) {
