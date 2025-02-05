@@ -9,12 +9,15 @@ namespace ProgramaPrincipal
         static string nombre = "Pepe";
         static void Main(string[] args)
         {
+            #region Primer ejemplo
             int edad = 20;
             Console.WriteLine("Hello, World!");
             Console.WriteLine(nombre);
             Console.WriteLine(edad);
             OtroMain(null);
+            #endregion
 
+            #region Tipos de datos
             //Numéricos
             int num = 123; // 123, 0, -2, 2000000
             short num2 = 123; // 123
@@ -48,7 +51,9 @@ namespace ProgramaPrincipal
             bool casado; // Álgebra booleana, lógica propicisional
             casado = false;
             casado = true;
+            #endregion
 
+            #region Arreglos
             // Arreglos (estructuras de datos -> estática)
             // Unidimensionales
             string[] roperoMama;
@@ -203,7 +208,9 @@ namespace ProgramaPrincipal
              Pepe
              Juan
              */
+            #endregion
 
+            #region Programación Orientada a Objetos
             // Programación Orientada a Objetos
             Persona per01;
             per01 = new Persona();
@@ -221,6 +228,65 @@ namespace ProgramaPrincipal
             Estudiante est02 = new Estudiante("Ana", "Rocha", 17,1240, "Psicología");
             est02.Saludar();
             est02.Presentarse();
+            est01.Votar("ABC");
+            est02.Votar("XXY");
+
+            Empleado emp = new Empleado("Pepe","Perales",25,"Aux. de almacén","08:30","16:30");
+            emp.Presentarse();
+            emp.Votar("PART");
+
+            Estudiante[] estudiantes = new Estudiante[4];
+            estudiantes[0] = est01;
+            estudiantes[1] = est02;
+            //estudiantes[2] = emp; // ERROR
+            ICiudadano[] ciudadanos = new ICiudadano[4];
+            ciudadanos[0] = est01;
+            ciudadanos[1] = emp;
+            ciudadanos[2] = est02;
+            //ciudadanos[3] = per01; // ERROR
+            //ICiudadano ci01 = new ICiudadano(); // ERROR
+            #endregion
+
+            #region Estructuras de Datos (Dinámicas)
+            #region Stack
+            Console.WriteLine("******** PILAS **********");
+            // Stack (Pila) - LIFO: Last In, First Out
+            Stack<string> libros = new Stack<string>();
+            Console.WriteLine($"Tamaño de pila de libros: {libros.Count}");
+            libros.Push("Diccionario Real");
+            Console.WriteLine($"Tamaño de pila de libros: {libros.Count}");
+            string nombreLibro = "";
+            do {
+                Console.WriteLine("Ingrese libro");
+                nombreLibro = Console.ReadLine();
+                if (!nombreLibro.Equals("FIN"))
+                    libros.Push(nombreLibro);
+            } while (!nombreLibro.Equals("FIN"));
+            Console.WriteLine($"Tamaño de pila de libros: {libros.Count}");
+            string libroSacado = libros.Pop();
+            Console.WriteLine($"Tamaño de pila de libros: {libros.Count}");
+            Console.WriteLine($"El libro extraído es: {libroSacado}.");
+            #endregion
+
+            #region Queue
+            // Queue (Cola) - FIFO: First In, First Out
+            Console.WriteLine("******** COLAS **********");
+            Queue<string> nombres = new Queue<string>();
+            Console.WriteLine($"Tamaño de la cola en el banco: {nombres.Count}");
+            nombres.Enqueue("Samantha");
+            string nombrePersona = "";
+            do {
+                Console.WriteLine("Ingrese a una persona");
+                nombrePersona = Console.ReadLine();
+                if (!nombrePersona.Equals("FIN"))
+                    nombres.Enqueue(nombrePersona);
+            } while (!nombrePersona.Equals("FIN"));
+            Console.WriteLine($"Tamaño de la cola en el banco: {nombres.Count}");
+            string personaExtraida = nombres.Dequeue();
+            Console.WriteLine($"Tamaño de la cola en el banco: {nombres.Count}");
+            Console.WriteLine($"Se sacó de la cola a {personaExtraida}");
+            #endregion
+            #endregion
         }
 
         static void OtroMain(string[] args) {

@@ -99,10 +99,40 @@ namespace ProyectoDeEjemplos
 
         public void Votar(string partido)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Yo, {nombre}, voté por el partido {partido}");
         }
     }
     public interface ICiudadano {
         public void Votar(string partido);
+    }
+    public class Empleado : Persona, ICiudadano
+    {
+        private string _cargo;
+        private string _horarioIngreso;
+        private string _horarioSalida;
+        public string cargo
+        {
+            get { return _cargo; }
+            set { _cargo = value; }
+        }
+        public string horarioIngreso
+        {
+            get { return _horarioIngreso; }
+            set { _horarioIngreso = value; }
+        }
+        public string horarioSalida
+        {
+            get { return _horarioSalida; }
+            set { _horarioSalida = value; }
+        }
+        public Empleado(string nombre, string apellido,int edad, string cargo, string ingreso, string salida) : base(nombre,apellido,edad) {
+            this.cargo = cargo;
+            this.horarioIngreso = ingreso;
+            this.horarioSalida = salida;
+        }
+        public void Votar(string partido)
+        {
+            Console.WriteLine($"Soy un empleado ({nombre}) y voté por {partido}");
+        }
     }
 }
