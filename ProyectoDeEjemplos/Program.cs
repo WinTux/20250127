@@ -286,6 +286,51 @@ namespace ProgramaPrincipal
             Console.WriteLine($"Tamaño de la cola en el banco: {nombres.Count}");
             Console.WriteLine($"Se sacó de la cola a {personaExtraida}");
             #endregion
+
+            #region List
+            // List (Lista) 
+            Console.WriteLine("******** LISTAS **********");
+            List<ICiudadano> lista_ciudadanos = new List<ICiudadano>();
+            Console.WriteLine($"Tamaño de la lista de ciudadanos : {lista_ciudadanos.Count}");
+            List<int> telefonos = new List<int>{ 123,456,789};
+            Console.WriteLine($"Tamaño de la lista de telefonos : {telefonos.Count}");
+            lista_ciudadanos.Add(new Estudiante("Sara","Soliz",17,123000,"Informática"));
+            Empleado emp_para_lista = new Empleado("Carlos", "Roca", 18, "Ayudante en ventas", "09:00", "18:00");
+            lista_ciudadanos.Add(emp_para_lista);
+            Console.WriteLine($"Tamaño de la lista de ciudadanos : {lista_ciudadanos.Count}");
+            for (int i = 0; i < lista_ciudadanos.Count;i++) {
+                lista_ciudadanos.ElementAt(i).Votar("ABC");
+            }
+            Empleado empZ = emp_para_lista;
+            Empleado empX = new Empleado(
+                emp_para_lista.nombre,
+                emp_para_lista.apellido,
+                emp_para_lista.edad,
+                emp_para_lista.cargo,
+                emp_para_lista.horarioIngreso,
+                emp_para_lista.horarioSalida
+            );
+            emp_para_lista.nombre = "Fabian";
+            emp_para_lista.apellido = "Ticona";
+            emp_para_lista.cargo = "Mensajero";
+            lista_ciudadanos.Add(emp_para_lista);
+            foreach (ICiudadano ciudadano_actual in lista_ciudadanos) {
+                ciudadano_actual.Votar("BBC");
+            }
+            Console.WriteLine("Passando por valor:");
+            int numTelf = 707;
+            int copia = numTelf;
+            telefonos.Add(numTelf);
+            foreach (int numActual in telefonos)
+                Console.Write(numActual+", ");
+            Console.WriteLine();
+            numTelf = 800;
+            telefonos.Add(numTelf);
+            foreach (int numActual in telefonos)
+                Console.Write(numActual + ", ");
+            Console.WriteLine();
+            #endregion
+
             #endregion
         }
 
